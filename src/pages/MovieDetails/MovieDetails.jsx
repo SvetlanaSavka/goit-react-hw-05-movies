@@ -1,9 +1,8 @@
-import { useParams, Link, useLocation } from 'react-router-dom';
+import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
 import { WiDirectionLeft } from 'react-icons/wi';
 import { useState, useEffect } from 'react';
 import { infoMovie } from 'servises/api';
-import { Reviews } from 'pages/Reviews';
-import { Credits } from 'pages/Credits';
+
 import { MovieInfoDitails } from 'components/MovieInfoDitails/MovieInfoDitails';
 import { Container } from './MovieDetails.styled';
 
@@ -36,8 +35,28 @@ const MovieDetails = () => {
         <MovieInfoDitails movie={movie} />
       </div>
       <h2>Additional information</h2>
-      <Credits movieId={movieId} />
-      <Reviews movieId={movieId} />
+      <Link
+        to="cast"
+        state={{
+          from: backLinkHref,
+          id: movieId,
+          a: 5,
+        }}
+      >
+        Go to cast
+      </Link>
+
+      <Link
+        to="reviews"
+        state={{
+          from: backLinkHref,
+          id: movieId,
+        }}
+      >
+        Go to reviews
+      </Link>
+
+      <Outlet />
     </Container>
   );
 };

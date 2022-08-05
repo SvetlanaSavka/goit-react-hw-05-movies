@@ -13,7 +13,7 @@ const movieApi = axios.create({
 export const searchMovies = async () => {
   try {
     const response = await movieApi.get('/trending/movie/day');
-    console.log(response);
+
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -24,7 +24,7 @@ export const searchMovies = async () => {
 export const infoMovie = async id => {
   try {
     const response = await movieApi.get(`/movie/${id}`);
-    console.log(response);
+
     return response;
   } catch (error) {
     console.log(error.message);
@@ -34,7 +34,7 @@ export const infoMovie = async id => {
 export const getMovieReviews = async id => {
   try {
     const response = await movieApi.get(`/movie/${id}/reviews`);
-    console.log(response);
+
     return response;
   } catch (error) {
     console.log(error.message);
@@ -46,7 +46,7 @@ export const getMovieReviews = async id => {
 export const getMovieCredits = async id => {
   try {
     const response = await movieApi.get(`/movie/${id}/credits`);
-    console.log(response);
+
     return response;
   } catch (error) {
     console.log(error.message);
@@ -57,7 +57,8 @@ export const getMovieCredits = async id => {
 export const getMovieSearch = async () => {
   try {
     const response = await movieApi.get(`/movie/search`);
-    console.log(response);
+
+    return response;
   } catch (error) {
     console.log(error.message);
   }

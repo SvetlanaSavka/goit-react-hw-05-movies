@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(() => {
     const getMovies = async () => {
       const response = await searchMovies();
-      console.log(response);
+
       setMovies(response.results);
     };
     getMovies();

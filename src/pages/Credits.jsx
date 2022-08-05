@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import { getMovieCredits } from 'servises/api';
 import { Cast } from 'components/Cast/Cast';
+import { useLocation } from 'react-router-dom';
 
-export const Credits = ({ movieId }) => {
+export const Credits = () => {
+  const location = useLocation();
+  const movieId = Number(location.state.id);
+  console.log(location);
+
   const [credits, setCredits] = useState([]);
 
   useEffect(() => {

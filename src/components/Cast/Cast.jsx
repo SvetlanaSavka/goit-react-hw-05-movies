@@ -1,13 +1,10 @@
-import { Link } from 'react-router-dom';
-
 export const Cast = ({ credits }) => {
   return (
     <ul>
-      {credits.map(({ id, name }) => (
+      {credits.map(({ id, name, profile_path }) => (
         <li key={id}>
-          <Link to={`cast/${id}`}>
-            <h2>{name}</h2>
-          </Link>
+          <h2>{name}</h2>
+          <img src="" alt="" />
         </li>
       ))}
     </ul>

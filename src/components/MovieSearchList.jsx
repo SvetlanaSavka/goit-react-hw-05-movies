@@ -1,4 +1,4 @@
-/* import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const MovieSearchList = ({ movies }) => {
   return (
@@ -12,4 +12,4 @@ export const MovieSearchList = ({ movies }) => {
       ))}
     </ul>
   );
-}; */
+};
