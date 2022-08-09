@@ -23,8 +23,6 @@ const MovieDetails = () => {
   }
   const backLinkHref = location.state?.from ?? '/movies';
 
-  //https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
-
   const base_url = 'https://image.tmdb.org/t/p/w500';
 
   console.log(movie);
