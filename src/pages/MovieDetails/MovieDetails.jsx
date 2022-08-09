@@ -1,10 +1,8 @@
-import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
-import { WiDirectionLeft } from 'react-icons/wi';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { infoMovie } from 'servises/api';
-
 import { MovieInfoDitails } from 'components/MovieInfoDitails/MovieInfoDitails';
-import { Container } from './MovieDetails.styled';
+import { Container, LinkStyled } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
@@ -24,29 +22,40 @@ const MovieDetails = () => {
     return;
   }
   const backLinkHref = location.state?.from ?? '/movies';
+
+  //https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
+
+  const base_url = 'https://image.tmdb.org/t/p/w500';
+
+  console.log(movie);
+
   return (
     <Container>
       <div>
-        <WiDirectionLeft width="20" height="20" fill="grey" />
-        <Link to={backLinkHref}>Back to movies</Link>
-        <img src="" alt={movie.title} width="250" />
+        <LinkStyled to={backLinkHref}>Back to movies</LinkStyled>
+
+        <img
+          src={`${base_url}${movie.profile_path ?? movie.poster_path}`}
+          alt={movie.title}
+          width="250"
+        />
+
         <h2>{movie.title}</h2>
         <p>{movie.overview}</p>
         <MovieInfoDitails movie={movie} />
       </div>
       <h2>Additional information</h2>
-      <Link
+      <LinkStyled
         to="cast"
         state={{
           from: backLinkHref,
           id: movieId,
-          a: 5,
         }}
       >
         Go to cast
-      </Link>
+      </LinkStyled>
 
-      <Link
+      <LinkStyled
         to="reviews"
         state={{
           from: backLinkHref,
@@ -54,7 +63,7 @@ const MovieDetails = () => {
         }}
       >
         Go to reviews
-      </Link>
+      </LinkStyled>
 
       <Outlet />
     </Container>

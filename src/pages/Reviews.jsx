@@ -3,7 +3,7 @@ import { getMovieReviews } from 'servises/api';
 import { ReviewsMovie } from 'components/ReviewsMovie/ReviewsMovie';
 import { useLocation } from 'react-router-dom';
 
-export const Reviews = () => {
+const Reviews = () => {
   const location = useLocation();
   const movieId = Number(location.state.id);
 
@@ -24,3 +24,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

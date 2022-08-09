@@ -1,52 +1,46 @@
-import { useState, useEffect, useMemo } from 'react';
-//import { Link, useLocation } from 'react-router-dom';
-import { getMovieSearch } from 'servises/api';
 import { SearchBox } from 'components/SearchBox/SearchBox';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { MovieSearchList } from 'components/MovieSearchList';
+import { getMovieSearch } from 'servises/api';
+import { MovieList } from 'components/MovieList/MovieList';
 
-const Movies = () => {
-  //const location = useLocation();
+getMovieSearch('cats').then(console.log);
+
+export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const filter = searchParams.get('filter') ?? '';
+  const filterParam = searchParams.get('filter') ?? '';
+
+  console.log(filterParam);
 
   useEffect(() => {
+    if (filterParam === '') {
+      return;
+    }
     const getMovies = async () => {
-      const response = await getMovieSearch();
+      const response = await getMovieSearch(filterParam);
       console.log(response);
-      setMovies(response.results);
+
+      setMovies(response.data.results);
     };
     getMovies();
-  }, []);
+  }, [filterParam]);
 
-  /* const changeFilter = value => {
-    setSearchParams(value !== '' ? { filter: value } : {});
-  }; */
-  const visibleMovies = useMemo(() => {
-    return movies.filter(movie =>
-      movie.title.toLowerCase().includes(filter.toLowerCase())
-    );
-  }, [movies, filter]);
+  const handleSubmit = search => {
+    setSearchParams(search !== '' ? { filter: search } : {});
+  };
+  /* const handleSubmit = search => {
+  setPage(1);
+  setSearch(search);
+  setPictures([]);
+}; */
 
   return (
     <>
       <div>
-        <SearchBox value={filter} /*  onChange={changeFilter} */ />
+        <SearchBox value={filterParam} onSubmit={handleSubmit} />
       </div>
-      {visibleMovies.length > 0 && (
-        <ul>
-          <MovieSearchList movies={movies} />
-          {/* {visibleMovies.map(({ id, title }) => (
-            <li key={id}>
-              <Link to={`/movies/${id}`} state={{ from: location }}>
-              <h2>{title}</h2>
-              </Link>
-            </li>
-          ))} */}
-        </ul>
-      )}
+      {movies.length > 0 && <MovieList movies={movies} />}
     </>
   );
 };
-export default Movies;

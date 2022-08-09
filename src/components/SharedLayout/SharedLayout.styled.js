@@ -17,6 +17,6 @@ export const Link = styled(NavLink)`
   font-family: serif;
   font-size: 50px;
   :hover {
-    color: tomato;
+    color: #3f51b5;
   }
 `;

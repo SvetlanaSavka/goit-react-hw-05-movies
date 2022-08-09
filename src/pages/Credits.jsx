@@ -3,7 +3,7 @@ import { getMovieCredits } from 'servises/api';
 import { Cast } from 'components/Cast/Cast';
 import { useLocation } from 'react-router-dom';
 
-export const Credits = () => {
+const Credits = () => {
   const location = useLocation();
   const movieId = Number(location.state.id);
   console.log(location);
@@ -24,3 +24,4 @@ export const Credits = () => {
     </>
   );
 };
+export default Credits;
