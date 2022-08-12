@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getMovieCredits } from 'servises/api';
-import { Cast } from 'components/Cast/Cast';
+import { CastList } from 'components/CastList/CastList';
 import { useLocation } from 'react-router-dom';
 
-const Credits = () => {
+const Casts = () => {
   const location = useLocation();
   const movieId = Number(location.state.id);
   console.log(location);
@@ -20,8 +20,8 @@ const Credits = () => {
 
   return (
     <>
-      <Cast credits={credits} />
+      <CastList credits={credits} />
     </>
   );
 };
-export default Credits;
+export default Casts;

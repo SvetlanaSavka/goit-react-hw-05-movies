@@ -1,10 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  //background-color: aqua;
-`;
-
 export const Header = styled.div`
   height: 80px;
   text-align: center;

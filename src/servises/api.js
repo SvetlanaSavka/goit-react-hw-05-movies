@@ -1,6 +1,14 @@
+import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { movieApi } from 'constants/constants';
+import { BASE_URL, API_KEY } from 'constants/constants';
+
+const movieApi = axios.create({
+  baseURL: BASE_URL,
+  params: {
+    api_key: API_KEY,
+  },
+});
 
 export const searchMovies = async () => {
   try {

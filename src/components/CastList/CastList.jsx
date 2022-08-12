@@ -1,10 +1,10 @@
-import { Title } from './Cast.styled';
+import { List } from './CastList.styled';
 
-export const Cast = ({ credits }) => {
+export const CastList = ({ credits }) => {
   const base_url = 'https://image.tmdb.org/t/p/w500';
 
   return (
-    <Title>
+    <List>
       {credits.slice(0, 7).map(({ id, name, profile_path }) => (
         <li key={id}>
           <h2>{name}</h2>
@@ -19,6 +19,6 @@ export const Cast = ({ credits }) => {
           />
         </li>
       ))}
-    </Title>
+    </List>
   );
 };

@@ -4,14 +4,12 @@ import { useSearchParams } from 'react-router-dom';
 import { getMovieSearch } from 'servises/api';
 import { MovieList } from 'components/MovieList/MovieList';
 
-getMovieSearch('cats').then(console.log);
+//getMovieSearch('cats').then(console.log);
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const filterParam = searchParams.get('filter') ?? '';
-
-  console.log(filterParam);
 
   useEffect(() => {
     if (filterParam === '') {
@@ -19,7 +17,6 @@ export const Movies = () => {
     }
     const getMovies = async () => {
       const response = await getMovieSearch(filterParam);
-      console.log(response);
 
       setMovies(response.data.results);
     };
@@ -29,18 +26,13 @@ export const Movies = () => {
   const handleSubmit = search => {
     setSearchParams(search !== '' ? { filter: search } : {});
   };
-  /* const handleSubmit = search => {
-  setPage(1);
-  setSearch(search);
-  setPictures([]);
-}; */
 
   return (
     <>
-      <div>
-        <SearchBox value={filterParam} onSubmit={handleSubmit} />
-      </div>
+      <SearchBox value={filterParam} onSubmit={handleSubmit} />
       {movies.length > 0 && <MovieList movies={movies} />}
     </>
   );
 };
+
+export default Movies;

@@ -27,11 +27,9 @@ export const SearchBox = ({ onSubmit, value }) => {
           <ButtonSearch type="submit">
             <GoSearch width="20" height="20" fill="grey" />
           </ButtonSearch>
-
           <SearchInput name="search" />
         </SearchForm>
       </Formik>
     </Container>
   );
 };
-

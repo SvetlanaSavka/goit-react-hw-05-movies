@@ -1,11 +1,6 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+/* import styled from 'styled-components';
 
-export const Container = styled.div`
-  padding: 40px;
+export const Logo = styled.div`
+  background-color: tomato;
 `;
-export const LinkStyled = styled(NavLink)`
-  display: block;
-  margin-bottom: 20px;
-  color: grey;
-`;
+ */

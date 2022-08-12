@@ -1,14 +1,14 @@
-import { Title } from './ReviewsMovie.styled';
+import { List } from './ReviewsMovie.styled';
 
 export const ReviewsMovie = ({ reviews }) => {
   return (
-    <Title>
+    <List>
       {reviews.map(({ id, author, content }) => (
         <li key={id}>
           <h2>{author}</h2>
           <p>{content}</p>
         </li>
       ))}
-    </Title>
+    </List>
   );
 };

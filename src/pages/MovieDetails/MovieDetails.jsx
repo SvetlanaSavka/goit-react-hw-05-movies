@@ -1,8 +1,10 @@
-import { useParams, useLocation, Outlet } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { infoMovie } from 'servises/api';
 import { MovieInfoDitails } from 'components/MovieInfoDitails/MovieInfoDitails';
-import { Container, LinkStyled } from './MovieDetails.styled';
+import { MovieDitailsAction } from 'components/MovieDitailsAction/MovieDitailsAction';
+import { MovieInformation } from 'components/MovieInformation/MovieInformation';
+import { BackLink } from 'components/BackLink/BackLink';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
@@ -23,48 +25,17 @@ const MovieDetails = () => {
   }
   const backLinkHref = location.state?.from ?? '/movies';
 
-  const base_url = 'https://image.tmdb.org/t/p/w500';
-
-  console.log(movie);
-
   return (
-    <Container>
-      <div>
-        <LinkStyled to={backLinkHref}>Back to movies</LinkStyled>
+    <>
+      <BackLink backLinkHref={backLinkHref} />
+      <MovieInformation movie={movie} />
 
-        <img
-          src={`${base_url}${movie.profile_path ?? movie.poster_path}`}
-          alt={movie.title}
-          width="250"
-        />
+      <MovieInfoDitails movie={movie} />
 
-        <h2>{movie.title}</h2>
-        <p>{movie.overview}</p>
-        <MovieInfoDitails movie={movie} />
-      </div>
-      <h2>Additional information</h2>
-      <LinkStyled
-        to="cast"
-        state={{
-          from: backLinkHref,
-          id: movieId,
-        }}
-      >
-        Go to cast
-      </LinkStyled>
-
-      <LinkStyled
-        to="reviews"
-        state={{
-          from: backLinkHref,
-          id: movieId,
-        }}
-      >
-        Go to reviews
-      </LinkStyled>
+      <MovieDitailsAction backLinkHref={backLinkHref} movieId={movieId} />
 
       <Outlet />
-    </Container>
+    </>
   );
 };
 export default MovieDetails;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
 
-export const Container = styled.header`
+export const Container = styled.div`
   top: 0;
   left: 0;
   position: sticky;
