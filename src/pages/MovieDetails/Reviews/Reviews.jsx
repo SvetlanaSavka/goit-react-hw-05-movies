@@ -16,13 +16,8 @@ const Reviews = () => {
     };
     getReviews();
   }, [movieId]);
-  // console.log(reviews);
-  console.log('reviews');
-  return (
-    <>
-      <ReviewsMovie reviews={reviews} />
-    </>
-  );
+
+  return <ReviewsMovie reviews={reviews} />;
 };
 
 export default Reviews;

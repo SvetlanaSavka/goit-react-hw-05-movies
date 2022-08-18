@@ -1,18 +1,19 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { SharedLoyout } from 'layout/SharedLayout/SharedLayout';
+import Loader from 'components/Loader/Loader';
 
-const Home = lazy(() => import('pages/Home/Home'));
-const Movies = lazy(() => import('pages/Home/Movies'));
+const Home = lazy(() => import('pages/Home'));
+const Movies = lazy(() => import('pages/Movies'));
 const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
 const Casts = lazy(() => import('pages/MovieDetails/Casts/Casts'));
 const Reviews = lazy(() => import('pages/MovieDetails/Reviews/Reviews'));
+const SharedLoyout = lazy(() => import('layout/SharedLayout'));
 
 export const App = () => {
   return (
     <>
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLoyout />}>
             <Route index element={<Home />} />

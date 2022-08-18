@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header, Link } from './SharedLayout.styled';
 
-export const SharedLoyout = () => {
+const SharedLoyout = () => {
   return (
     <>
       <Header>
@@ -18,3 +18,5 @@ export const SharedLoyout = () => {
     </>
   );
 };
+
+export default SharedLoyout;

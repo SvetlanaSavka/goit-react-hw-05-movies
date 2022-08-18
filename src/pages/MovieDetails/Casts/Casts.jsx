@@ -18,10 +18,6 @@ const Casts = () => {
     getCredits();
   }, [movieId]);
 
-  return (
-    <>
-      <CastList credits={credits} />
-    </>
-  );
+  return <CastList credits={credits} />;
 };
 export default Casts;

@@ -1,8 +1,7 @@
 import { List } from './CastList.styled';
+import { base_url } from 'constants/constants';
 
 export const CastList = ({ credits }) => {
-  const base_url = 'https://image.tmdb.org/t/p/w500';
-
   return (
     <List>
       {credits.slice(0, 7).map(({ id, name, profile_path }) => (
